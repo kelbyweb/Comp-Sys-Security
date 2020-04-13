@@ -1,0 +1,44 @@
+!!! This is an INDIVIDUAL project. Submit your project report as one file (word or pdf) in Canvas by 5pm, April 21. !!!
+
+====== Project Description ======
+
+The project is to reverse engineer a binary program and then exploit a stack overflow vulnerability of the program to run a hidden function "secret".
+ 
+The vulnerable binary program is "vul". You need to copy it to the department server, e.g. zeus.cs.txstate.edu. Then, you can run the program the department server, e.g. "./vul"
+
+Then, you need to use the reverse engineer tool Ghidra to find the decompiled source code and the debugging tool Kdbg (or gdb) to explore the flaw of the program.
+
+The attack approach is to use overflow to overwrite a return address in stack so that the program will return to the hidden function "secret".
+
+An attack program "attack.py" is provided. You need to copy it to the department server, and run "python attack.py | ./vul" to attack.
+
+You may study in group. Once you figure out a solution, you need to complete the solution and submit an individual report.
+
+====== Report and Grading ======
+
+The score of the project is 10 points.
+
+Your report should include what you did and the results you obtained in the five steps below.
+
+Step 1: You will get 2 points, if you are able to run "./vul" and "python attack.py | ./vul" in the department server.
+  Show a screenshot of running the two programs in the department server. Run "./vul" with some test inputs at your choice. Run "python attack.py | ./vul" with the three test strings in attack.py.
+
+Step 2: After step 1, you will get 2 more points, if you are able to reverse engineer "vul" in Ghidra and find the code address of the function "secret". The code address is like "0x0040????".
+  Show a screenshot of the function "secret" in Ghidra. State the address of the function "secret". The screenshot should reflect the function address.
+
+Step 3: After step 2, you will get 2 more points, if you are able to execute and debug "vul" in kdbg or gdb, and inspect the stack memory of "vul". The stack memory address is like "0x007FFFFFFFFF????".
+  Show a screenshot of the stack memory section that includes the buf[8] variable and the good return address in kdbg or gdb. Caculate the distance (as the number of bytes) between the buf[8] variable and the good return address. The distance should match the memory section in the screenshot.
+
+Step 4: After step 3, you will get 2 more points, if you are able to figure out a correct overflow string in attack.py.
+  Show a screenshot of the overflow string in attack.py. The overflow string should reflect the results in Steps 2 and 3.
+
+Step 5: After step 4, you will get 2 more points, if you are able to get the secret output "You find a secret ...".
+  Show a screenshot of the secret output. A segment fault error may follow the secret output.
+
+You don't need to include anything for introduction or conclusion in your report.
+
+Have fun!
+Qijun
+
+
+
